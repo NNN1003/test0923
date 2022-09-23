@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    // var a=2;
+    // {
+    //     let a=3;
+    //     document.write(a);//3
+    // }
+    // document.write('<br>');
+    // document.write(a);//2
+    // document.write('<br>');
+
+    // {
+    //     let a=1003;
+    //     var b=802;
+    // }
+    // console.log(a);//不显示，因为let只在代码块内有效，var则是全局内有效
+    // console.log(b);//802
+
+    // let x=1;
+    // // let x=2;//let只能声明一次
+    // var y=3;//var可以声明多次
+    // var y=4;
+    // document.write(x);
+    // document.write('<br>');
+    // document.write(y);
+    //变量 i 是用 var 声明的，在全局范围内有效，所以全局中只有一个变量 i, 每次循环时，setTimeout 定时器里面的 i 指的是全局变量 i ，而循环里的十个 setTimeout 是在循环结束后才执行，所以此时的 i 都是 10。
+    // for(var i=0;i<10;i++)
+    // {
+    //     setTimeout(function(){
+    //         console.log(i);
+    //     })
+    // }
+    //变量 j 是用 let 声明的，当前的 j 只在本轮循环中有效，每次循环的 j 其实都是一个新的变量，所以 setTimeout 定时器里面的 j 其实是不同的变量。
+    // for(let j=0;j<10;j++)
+    // {
+    //     setTimeout(function(){
+    //         console.log(j);
+    //     })
+    // }
+
+    //console.log(n);  //ReferenceError: n is not defined
+    let n = "ccc";//let不存在变量提升，即在声明a变量之前，a不存在
+    console.log(m);  //undefined
+    var m = "hhh";//var存在变量提升，声明之前已经存在，但还没有赋值
+    
+    //使用const注意两点
+    //1.一旦声明必须初始化；
+    //2.声明之后不可改变
+    const f="4";
+    //var f="5";//Uncaught SyntaxError: Identifier 'f' has already been declared
+    console.log(f);
+    //常量声明中缺少初始值设定项
+    //const age;//SyntaxError: Missing initializer in const declaration
+
+    //暂时性死区：代码块内如果存在let/const，会对声明的变量从块开始形成一个封闭作用域，在代码块内，声明变量之前使用该变量会报错
+    var PI = "a";
+    if(true)
+    {
+        // let PI="c"; 
+        console.log(PI); // Cannot access 'PI' before initialization
+        // const PI = "3.1415926";//注释该句，即句子中不含cosnt则不报错
+    }
+    
+    //ES6解构赋值
+    //作用：针对数组或者对象进行模式匹配，对其中的变量进行赋值
+    
+    //基本形式及用法
+    // let[a1,a2,a3]=[1,22,333];
+    // console.log(a1);//1
+    // console.log(a2);//22
+    // console.log(a3);//333
+    
+    //可以嵌套
+    // let[a1,[a2,a3,[a4]]]=[1,[22,333,[4444]]];
+    // console.log(a1);//1
+    // console.log(a2);//22
+    // console.log(a3);//333
+    // console.log(a4);//4444
+
+    //可以忽略
+    // let [,n1, ,n2, ]=[1,0,9,3,6];
+    // console.log(n1);
+    // console.log(n2);
+
+    //不完全解构
+    // let [n1=1,n2,n3]=[,2];
+    // console.log(n1);//1
+    // console.log(n2);//2
+    // console.log(n3);//undefined
+
+    //剩余运算符
+    // let [n1,...n2]=[1,2,3,4];
+    // console.log(n1);//1
+    // console.log(n2);//[2,3,4]
+    
+    //字符串
+    //let [a,b,c,d,e]='hello';
+    //console.log(a);//h
+    //console.log(b);//e
+    //console.log(c);//l
+    //console.log(d);//l
+    //console.log(e);//o
+
+    //结构默认值
+    // let [a=2]=[undefined];
+    // console.log(a);//2
+
+    // let [a=3,b=a]=[];
+    // console.log(a);//3
+    // console.log(b);//3
+    
+    // let [a=3,b=a]=[1];
+    // console.log(a);//1
+    // console.log(b);//1
+
+    // let [a=3,b=a]=[1,2];
+    // console.log(a);//1
+    // console.log(b);//2
+
+    //对象模型的结构
+    //基本形式
+    // let {banana,apple}={banana:'yellow',apple:'red'};
+    // console.log(banana);//yellow
+    // console.log(apple);//red
+    // let {pear:banana}={'q':banana};
+    // console.log(pear);//Uncaught ReferenceError: Cannot access 'banana' before initialization
+    // let {pear:banana}={pear:'okk'};
+    // console.log(banana);//okk
+
+    //可嵌套可忽略
+
+    // let obj={a:['double',{b:'nn'}]};
+    // let {a:[x,{b}]}=obj;
+    // console.log(x);
+    // console.log(b);
+    // let obj={p:['hello',{y:'world'}]};
+    // let {p:[x,{ }]}=obj;
+    // console.log(x);
+
+    // let obj={a:['a',{b:'b'},'ccccc']};
+    // let {a:[x,{ },y]}=obj;
+    // console.log(x);
+    // //console.log(b);//Uncaught ReferenceError: b is not defined
+    // console.log(y);
+    
+    // 不完全解构
+    // let obj={p:[{a:'ccc'}]};
+    // let {p:[{a},x]}=obj;
+    // console.log(a);//ccc
+    // console.log(x);//undefined
+    
+    //剩余运算符
+    // let obj={a,...b}={a:1,c:2,d:3,b:4};
+    // console.log(a);//1
+    // console.log(b);//{c:2,d:3,b:4}
+
+
+    //结构默认值
+    // let{a=1,b=2}={a:3};
+    // console.log(a);//3
+    // console.log(b);//2
+    // let {a:aa=1,b:bb=2}={a:3};
+    // console.log(aa);//3
+    // //console.log(a);//Uncaught ReferenceError: a is not defined
+    // console.log(bb);//2
+
+    //Symbol数据类型用来定义对象唯一属性名
+    // let s1=Symbol("x");
+    // s2=s1;
+    // let s3=Symbol("x");
+    // //对于Symbol()，相同的参数返回的值不相等
+    // console.log(s1===s2);//true
+    // console.log(s1===s3);//false
+
+    
+
+</script>
+</body>
+</html>

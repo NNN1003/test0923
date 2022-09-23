@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>222</p>
+    <script>
+    let b=1;
+    // //写法一
+    //let x=Symbol("a");
+    // let xObject={};
+    // xObject[x]="b";
+    // console.log(xObject);//{Symbol(a):'b'}
+    //写法二
+    // let sy=Symbol("a");
+    // let syObject={
+    //     [sy]:"aaa"
+    // };
+    // console.log(syObject);//{Symbol(a):'aaa'}
+    //写法三
+    // let syObject={}
+    // Object.defineProperty(syObject,sy,{value:"aaa"});
+
+    //let sy=Symbol("nn");
+    // let syObject={};
+    // syObject[sy]="aaa";
+    // //console.log(syObject[sy]);//aaa
+    // //console.log(syObject.sy);//undefined
+
+    // let syObject={};
+    // syObject[sy]="1003";
+    // // console.log(syObject);
+
+    // for(let i in syObject){
+    //     console.log(i);//无输出，Symbol属性不会出现在for in，for of语句中
+    // }
+    // //也不会被 Object.keys() 、 Object.getOwnPropertyNames() 返回
+    // console.log(Object.keys(syObject));//[]
+    // console.log(Object.getOwnPropertyNames(syObject));//[]
+    // //可以通过 Object.getOwnPropertySymbols() 和 Reflect.ownKeys() 取到
+    // console.log(Object.getOwnPropertySymbols(syObject));//[Symbol(nn)]
+    // console.log(Reflect.ownKeys(syObject));//[Symbol(nn)]
+
+    //定义常量
+    const COLOR_RED = "red";
+    const COLOR_YELLOW = "yellow";
+    const COLOR_BLUE = "blue";
+    const MY_BLUE = "blue";
+
+function ColorException(message) {
+    this.message = message;
+    this.name = "ColorException";
+}
+function getConstantName(color) {
+    switch (color) {
+        case COLOR_RED :
+            return "COLOR_RED";
+        case COLOR_YELLOW :
+            return "COLOR_YELLOW ";
+        case COLOR_BLUE:
+            return "COLOR_BLUE";
+        case MY_BLUE:
+            return "MY_BLUE";
+        default:
+            throw new ColorException("Can't find this color");
+    }
+}
+    try {
+        var color = "green"; // green 引发异常
+        var colorName = getConstantName(color);
+    }
+    catch (e) {
+        var colorName = "unknown";
+        console.log(e.message, e.name); // 传递异常对象到错误处理
+    }
+    </script>
+</body>
+</html>
